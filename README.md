@@ -1,5 +1,5 @@
 # vindicator
-Simple indicator for using in shell scripts written in Vala
+Simple taskbar indicator for using in shell scripts written in Vala
 
 Usage:
 
