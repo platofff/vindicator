@@ -10,15 +10,27 @@ public async void nap (uint interval, int priority = GLib.Priority.DEFAULT) {
 
 public async void update_icon(Indicator indicator, string iconFilename, string iconPath) {
 	indicator.set_icon_theme_path(iconPath);
+	#if UPDATE_ICON
+	update_indicator_icon(); // Custom function call
+
 	while(true) {
+	#endif
 		indicator.set_icon_full("process-working", "none");
 		indicator.set_icon_full(iconFilename, "none");
+	#if UPDATE_ICON
 		yield nap(5000);
 	}
+	#endif
 }
 
 public class Applet {
         public static int main(string[] args) {
+		if (args[1] == "--help") {
+			print("Usage:\n");
+			print("vindicator <path to icon without extension> <command to run on click Open>\n");
+			return 0;
+		}
+
                 Gtk.init(ref args);
 
 		var iconPath = Path.get_dirname(args[1]);
@@ -40,7 +52,7 @@ public class Applet {
 
                 indicator.set_menu(menu);
 		update_icon(indicator, iconFilename, iconPath);
-                Gtk.main();
+		Gtk.main();
                 return 0;
         }
 }

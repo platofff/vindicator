@@ -1,5 +1,5 @@
 # vindicator
-Simple taskbar indicator for using in shell scripts written in Vala
+Simple app indicator for using in shell scripts written in Vala. With -Os binary size will be 20KB.
 
 Usage:
 
@@ -7,4 +7,16 @@ Usage:
 
 `vindicator /home/me/Images/icon "echo Hello"`
 
-Re-reading icon every 5 seconds.
+
+If you provide "UPDATE_ICON=yoursource.vala" build option, calling your update_inicator_icon()
+function and then re-reading icon every 5 seconds will be enabled.
+
+For example:
+
+`../yoursource.vala`
+
+```public static void update_indicator_icon() {
+	// your stuff here
+}```
+
+`make UPDATE_ICON=../yourcode.vala VALAFLAGS="--pkg some-package" CFLAGS="-O3"`
