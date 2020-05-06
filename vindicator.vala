@@ -18,7 +18,9 @@ public async void update_icon(Indicator indicator, string iconFilename, string i
 	while(true) {
 		update_indicator_icon(); // custom function call
 	#endif
+		indicator.set_status(IndicatorStatus.PASSIVE);
 		indicator.set_icon_full(iconFilename, n);
+		indicator.set_status(IndicatorStatus.ACTIVE);
 	#if UPDATE_ICON
 		n = (int.parse (n) + 1).to_string();
 		yield nap(5000);
@@ -39,10 +41,7 @@ public class Applet {
 		var iconPath = Path.get_dirname(args[1]);
 		var iconFilename = Path.get_basename(args[1]);
 
-                var indicator = new Indicator("App", iconFilename, IndicatorCategory.APPLICATION_STATUS);
-
-		// indicator.set_icon_theme_path(iconPath);
-		indicator.set_status(IndicatorStatus.ACTIVE);
+                var indicator = new Indicator("App", iconFilename, IndicatorCategory.HARDWARE);
 		
                 var menu = new Gtk.Menu();
 

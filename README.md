@@ -1,5 +1,6 @@
 # vindicator
 Simple app indicator for using in shell scripts written in Vala. With -Os binary size will be 20KB.
+Using libappindicator for GTK+ 3.
 
 Usage:
 
