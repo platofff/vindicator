@@ -16,8 +16,10 @@ For example:
 `../yoursource.vala`
 
 ```
-public static void update_indicator_icon() {
-	// your stuff here
+namespace Custom {
+	public static void update_indicator_icon() {
+		// your stuff here
+	}
 }
 ```
 
