@@ -15,8 +15,10 @@ For example:
 
 `../yoursource.vala`
 
-```public static void update_indicator_icon() {
+```
+public static void update_indicator_icon() {
 	// your stuff here
-}```
+}
+```
 
 `make UPDATE_ICON=../yourcode.vala VALAFLAGS="--pkg some-package" CFLAGS="-O3"`
