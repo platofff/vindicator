@@ -7,7 +7,7 @@ ifeq ($(UPDATE_ICON),)
 	valac --cc="cc $(CFLAGS)" --pkg appindicator3-0.1 --pkg gtk+-3.0 vindicator.vala
 else
 	valac --cc="cc $(CFLAGS)" $(VALAPARAMS) --pkg appindicator3-0.1 \
-	--pkg gtk+-3.0 -D UPDATE_ICON=$(UPDATE_ICON) vindicator.vala -o vindicator
+	--pkg gtk+-3.0 -D UPDATE_ICON $(UPDATE_ICON) vindicator.vala -o vindicator
 endif
 	strip vindicator	
 

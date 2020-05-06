@@ -1,4 +1,7 @@
 using AppIndicator;
+#if UPDATE_ICON
+using Custom;
+#endif
 
 public async void nap (uint interval, int priority = GLib.Priority.DEFAULT) {
 	GLib.Timeout.add (interval, () => {
@@ -11,13 +14,13 @@ public async void nap (uint interval, int priority = GLib.Priority.DEFAULT) {
 public async void update_icon(Indicator indicator, string iconFilename, string iconPath) {
 	indicator.set_icon_theme_path(iconPath);
 	#if UPDATE_ICON
-	update_indicator_icon(); // Custom function call
-
+	string n = "0";
 	while(true) {
+		update_indicator_icon(); // custom function call
 	#endif
-		indicator.set_icon_full("process-working", "none");
-		indicator.set_icon_full(iconFilename, "none");
+		indicator.set_icon_full(iconFilename, n);
 	#if UPDATE_ICON
+		n = (int.parse (n) + 1).to_string();
 		yield nap(5000);
 	}
 	#endif
