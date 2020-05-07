@@ -14,6 +14,6 @@ endif
 clean:
 	rm -f vindicator
 
-install: vindicator
+install: all
 	install -d $(DESTDIR)$(PREFIX)/bin/
 	install -m 755 vindicator $(DESTDIR)$(PREFIX)/bin/

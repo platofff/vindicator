@@ -13,8 +13,8 @@ public async void nap (uint interval, int priority = GLib.Priority.DEFAULT) {
 
 public async void update_icon(Indicator indicator, string iconFilename, string iconPath) {
 	indicator.set_icon_theme_path(iconPath);
-	#if UPDATE_ICON
 	string n = "0";
+	#if UPDATE_ICON
 	while(true) {
 		update_indicator_icon(); // custom function call
 	#endif
